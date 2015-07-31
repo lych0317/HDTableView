@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B37668B1B6A35A800F9CC8F /* HDIndexPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B37668A1B6A35A800F9CC8F /* HDIndexPath.m */; };
+		6B5C9BB01B6B0E2F00E770A5 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B5C9BAF1B6B0E2F00E770A5 /* icon@2x.png */; };
+		6B5C9BB81B6B0E4200E770A5 /* HDIndexPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B5C9BB31B6B0E4200E770A5 /* HDIndexPath.m */; };
+		6B5C9BB91B6B0E4200E770A5 /* HDTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B5C9BB51B6B0E4200E770A5 /* HDTableCell.m */; };
+		6B5C9BBA1B6B0E4200E770A5 /* HDTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B5C9BB71B6B0E4200E770A5 /* HDTableView.m */; };
 		6BA7BBF31B61F12700FDFA92 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA7BBF21B61F12700FDFA92 /* main.m */; };
 		6BA7BBF61B61F12700FDFA92 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA7BBF51B61F12700FDFA92 /* AppDelegate.m */; };
 		6BA7BBFC1B61F12700FDFA92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BA7BBFA1B61F12700FDFA92 /* Main.storyboard */; };
 		6BA7BBFE1B61F12700FDFA92 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BA7BBFD1B61F12700FDFA92 /* Images.xcassets */; };
 		6BA7BC011B61F12700FDFA92 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BA7BBFF1B61F12700FDFA92 /* LaunchScreen.xib */; };
 		6BA7BC0D1B61F12700FDFA92 /* HDTableDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA7BC0C1B61F12700FDFA92 /* HDTableDemoTests.m */; };
-		6BA7BC191B61F19000FDFA92 /* HDTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA7BC181B61F19000FDFA92 /* HDTableView.m */; };
 		6BACBD4A1B65D52A00A69013 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BACBD491B65D52A00A69013 /* ViewController.m */; };
-		6BACBD4C1B65FB3E00A69013 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BACBD4B1B65FB3E00A69013 /* icon.png */; };
-		6BD6E69A1B66242F00AC5554 /* HDTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BD6E6991B66242F00AC5554 /* HDTableCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,8 +31,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6B3766891B6A35A800F9CC8F /* HDIndexPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDIndexPath.h; path = ../../HDTableClass/HDIndexPath.h; sourceTree = "<group>"; };
-		6B37668A1B6A35A800F9CC8F /* HDIndexPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDIndexPath.m; path = ../../HDTableClass/HDIndexPath.m; sourceTree = "<group>"; };
+		6B5C9BAF1B6B0E2F00E770A5 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		6B5C9BB21B6B0E4200E770A5 /* HDIndexPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDIndexPath.h; sourceTree = "<group>"; };
+		6B5C9BB31B6B0E4200E770A5 /* HDIndexPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDIndexPath.m; sourceTree = "<group>"; };
+		6B5C9BB41B6B0E4200E770A5 /* HDTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDTableCell.h; sourceTree = "<group>"; };
+		6B5C9BB51B6B0E4200E770A5 /* HDTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDTableCell.m; sourceTree = "<group>"; };
+		6B5C9BB61B6B0E4200E770A5 /* HDTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDTableView.h; sourceTree = "<group>"; };
+		6B5C9BB71B6B0E4200E770A5 /* HDTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDTableView.m; sourceTree = "<group>"; };
 		6BA7BBED1B61F12700FDFA92 /* HDTableDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HDTableDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BA7BBF11B61F12700FDFA92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BA7BBF21B61F12700FDFA92 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -45,12 +50,7 @@
 		6BA7BC061B61F12700FDFA92 /* HDTableDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HDTableDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BA7BC0B1B61F12700FDFA92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BA7BC0C1B61F12700FDFA92 /* HDTableDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDTableDemoTests.m; sourceTree = "<group>"; };
-		6BA7BC171B61F19000FDFA92 /* HDTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDTableView.h; path = ../../HDTableClass/HDTableView.h; sourceTree = "<group>"; };
-		6BA7BC181B61F19000FDFA92 /* HDTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDTableView.m; path = ../../HDTableClass/HDTableView.m; sourceTree = "<group>"; };
 		6BACBD491B65D52A00A69013 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		6BACBD4B1B65FB3E00A69013 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../../../../../toneImages/icon.png; sourceTree = "<group>"; };
-		6BD6E6981B66242F00AC5554 /* HDTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HDTableCell.h; path = ../../HDTableClass/HDTableCell.h; sourceTree = "<group>"; };
-		6BD6E6991B66242F00AC5554 /* HDTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HDTableCell.m; path = ../../HDTableClass/HDTableCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,10 +71,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B5C9BB11B6B0E4200E770A5 /* HDTableClass */ = {
+			isa = PBXGroup;
+			children = (
+				6B5C9BB21B6B0E4200E770A5 /* HDIndexPath.h */,
+				6B5C9BB31B6B0E4200E770A5 /* HDIndexPath.m */,
+				6B5C9BB41B6B0E4200E770A5 /* HDTableCell.h */,
+				6B5C9BB51B6B0E4200E770A5 /* HDTableCell.m */,
+				6B5C9BB61B6B0E4200E770A5 /* HDTableView.h */,
+				6B5C9BB71B6B0E4200E770A5 /* HDTableView.m */,
+			);
+			name = HDTableClass;
+			path = ../HDTableClass;
+			sourceTree = "<group>";
+		};
 		6BA7BBE41B61F12700FDFA92 = {
 			isa = PBXGroup;
 			children = (
-				6BA7BC161B61F13100FDFA92 /* HDTableClass */,
+				6B5C9BB11B6B0E4200E770A5 /* HDTableClass */,
 				6BA7BBEF1B61F12700FDFA92 /* HDTableDemo */,
 				6BA7BC091B61F12700FDFA92 /* HDTableDemoTests */,
 				6BA7BBEE1B61F12700FDFA92 /* Products */,
@@ -97,7 +111,7 @@
 				6BA7BBF51B61F12700FDFA92 /* AppDelegate.m */,
 				6BA7BBF71B61F12700FDFA92 /* ViewController.h */,
 				6BACBD491B65D52A00A69013 /* ViewController.m */,
-				6BACBD4B1B65FB3E00A69013 /* icon.png */,
+				6B5C9BAF1B6B0E2F00E770A5 /* icon@2x.png */,
 				6BA7BBFA1B61F12700FDFA92 /* Main.storyboard */,
 				6BA7BBFD1B61F12700FDFA92 /* Images.xcassets */,
 				6BA7BBFF1B61F12700FDFA92 /* LaunchScreen.xib */,
@@ -130,19 +144,6 @@
 				6BA7BC0B1B61F12700FDFA92 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		6BA7BC161B61F13100FDFA92 /* HDTableClass */ = {
-			isa = PBXGroup;
-			children = (
-				6B3766891B6A35A800F9CC8F /* HDIndexPath.h */,
-				6B37668A1B6A35A800F9CC8F /* HDIndexPath.m */,
-				6BD6E6981B66242F00AC5554 /* HDTableCell.h */,
-				6BD6E6991B66242F00AC5554 /* HDTableCell.m */,
-				6BA7BC171B61F19000FDFA92 /* HDTableView.h */,
-				6BA7BC181B61F19000FDFA92 /* HDTableView.m */,
-			);
-			path = HDTableClass;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,9 +227,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BA7BBFC1B61F12700FDFA92 /* Main.storyboard in Resources */,
+				6B5C9BB01B6B0E2F00E770A5 /* icon@2x.png in Resources */,
 				6BA7BC011B61F12700FDFA92 /* LaunchScreen.xib in Resources */,
 				6BA7BBFE1B61F12700FDFA92 /* Images.xcassets in Resources */,
-				6BACBD4C1B65FB3E00A69013 /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,10 +248,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BA7BBF61B61F12700FDFA92 /* AppDelegate.m in Sources */,
+				6B5C9BBA1B6B0E4200E770A5 /* HDTableView.m in Sources */,
+				6B5C9BB81B6B0E4200E770A5 /* HDIndexPath.m in Sources */,
+				6B5C9BB91B6B0E4200E770A5 /* HDTableCell.m in Sources */,
 				6BA7BBF31B61F12700FDFA92 /* main.m in Sources */,
-				6BD6E69A1B66242F00AC5554 /* HDTableCell.m in Sources */,
-				6B37668B1B6A35A800F9CC8F /* HDIndexPath.m in Sources */,
-				6BA7BC191B61F19000FDFA92 /* HDTableView.m in Sources */,
 				6BACBD4A1B65D52A00A69013 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,6 +381,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HDTableDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -390,6 +392,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HDTableDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

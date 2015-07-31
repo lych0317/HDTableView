@@ -19,12 +19,6 @@ static NSString *CellForReuseIdentifier = @"CellForReuseIdentifier";
 static NSString *HeaderForReuseIdentifier = @"HeaderForReuseIdentifier";
 static NSString *FooterForReuseIdentifier = @"FooterForReuseIdentifier";
 
-@interface HDTableView ()
-
-@property (nonatomic, strong) UITableView *tableView;
-
-@end
-
 @implementation HDTableView
 
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
@@ -42,6 +36,11 @@ static NSString *FooterForReuseIdentifier = @"FooterForReuseIdentifier";
 
         [self addSubview:self.tableView];
 
+        _selectedFlagView = [[UIView alloc] initWithFrame:CGRectZero];
+        _selectedFlagView.backgroundColor = [UIColor purpleColor];
+
+        [self.tableView addSubview:self.selectedFlagView];
+
         [self initProperty];
     }
     return self;
@@ -51,11 +50,23 @@ static NSString *FooterForReuseIdentifier = @"FooterForReuseIdentifier";
     self.widthForColumn = 150;
     self.widthForHeader = 0;
     self.widthForFooter = 0;
+    self.heightForSelectedFlag = 0;
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.tableView.frame = self.bounds;
+
+    [self layoutSelectedFlagViewWithIndexPath:[self.tableView indexPathForSelectedRow]];
+}
+
+- (void)layoutSelectedFlagViewWithIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath) {
+        CGRect rect = [self.tableView rectForRowAtIndexPath:indexPath];
+        [UIView animateWithDuration:0.5 animations:^{
+            self.selectedFlagView.frame = CGRectMake(CGRectGetMinX(rect), CGRectGetMinY(rect), [self heightForSelectedFlagAtIndexPath:HDIndexPathFromNSIndexPath(indexPath)], CGRectGetHeight(rect));
+        }];
+    }
 }
 
 - (void)scrollToRowAtIndexPath:(HDIndexPath *)indexPath atScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated {
@@ -64,6 +75,7 @@ static NSString *FooterForReuseIdentifier = @"FooterForReuseIdentifier";
 
 - (void)selectRowAtIndexPath:(HDIndexPath *)indexPath animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition {
     [self.tableView selectRowAtIndexPath:NSIndexPathFromHDIndexPath(indexPath) animated:animated scrollPosition:scrollPosition];
+    [self layoutSelectedFlagViewWithIndexPath:NSIndexPathFromHDIndexPath(indexPath)];
 }
 
 - (void)deselectRowAtIndexPath:(HDIndexPath *)indexPath animated:(BOOL)animated {
@@ -138,6 +150,8 @@ static NSString *FooterForReuseIdentifier = @"FooterForReuseIdentifier";
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     HDTableCell *hdCell = (HDTableCell *)[cell.contentView viewWithTag:HDTableCellTag];
     hdCell.selected = YES;
+
+    [self layoutSelectedFlagViewWithIndexPath:indexPath];
 
     if ([self.delegate respondsToSelector:@selector(tableView:didSelectColumnAtIndexPath:)]) {
         [self.delegate tableView:self didSelectColumnAtIndexPath:HDIndexPathFromNSIndexPath(indexPath)];
@@ -220,6 +234,13 @@ static NSString *FooterForReuseIdentifier = @"FooterForReuseIdentifier";
         return [self.delegate tableView:self widthForFooterInSection:section];
     }
     return self.widthForFooter;
+}
+
+- (NSInteger)heightForSelectedFlagAtIndexPath:(HDIndexPath *)indexPath {
+    if ([self.delegate respondsToSelector:@selector(tableView:heightForSelectedFlagAtIndexPath:)]) {
+        return [self.delegate tableView:self heightForSelectedFlagAtIndexPath:indexPath];
+    }
+    return self.heightForSelectedFlag;
 }
 
 - (UIView *)viewForHeaderInSection:(NSInteger)section reuseableHeader:(UIView *)header{

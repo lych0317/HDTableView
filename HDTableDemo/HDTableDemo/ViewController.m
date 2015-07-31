@@ -23,6 +23,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.backgroundColor = [UIColor redColor];
+    self.tableView.selectedFlagView.hidden = NO;
     [self.view addSubview:self.tableView];
 }
 
@@ -56,6 +57,10 @@
         return 5;
     }
     return 0;
+}
+
+- (NSInteger)tableView:(HDTableView *)tableView heightForSelectedFlagAtIndexPath:(HDIndexPath *)indexPath {
+    return 2;
 }
 
 - (UIView *)tableView:(HDTableView *)tableView viewForHeaderInSection:(NSInteger)section reuseableHeader:(UIView *)header {

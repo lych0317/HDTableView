@@ -33,6 +33,7 @@
 - (NSInteger)tableView:(HDTableView *)tableView widthForColumnAtIndexPath:(HDIndexPath *)indexPath;
 - (NSInteger)tableView:(HDTableView *)tableView widthForHeaderInSection:(NSInteger)section;
 - (NSInteger)tableView:(HDTableView *)tableView widthForFooterInSection:(NSInteger)section;
+- (NSInteger)tableView:(HDTableView *)tableView heightForSelectedFlagAtIndexPath:(HDIndexPath *)indexPath;
 
 - (void)tableView:(HDTableView *)tableView didSelectColumnAtIndexPath:(HDIndexPath *)indexPath;
 
@@ -46,9 +47,13 @@
 @property (nonatomic, assign) id<HDTableViewDataSource> dataSource;
 @property (nonatomic, assign) id<HDTableViewDelegate> delegate;
 
+@property (nonatomic, strong, readonly) UITableView *tableView;
+@property (nonatomic, strong, readonly) UIView *selectedFlagView;
+
 @property (nonatomic, assign) NSInteger widthForColumn;
 @property (nonatomic, assign) NSInteger widthForHeader;
 @property (nonatomic, assign) NSInteger widthForFooter;
+@property (nonatomic, assign) NSInteger heightForSelectedFlag;
 
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style;
 
