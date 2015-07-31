@@ -121,7 +121,7 @@ static NSString *FooterForReuseIdentifier = @"FooterForReuseIdentifier";
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     UIView *view = [cell.contentView viewWithTag:HDTableCellTag];
-    view.frame = CGRectMake(0, CGRectGetWidth(cell.frame) - CGRectGetHeight(self.frame), CGRectGetWidth(cell.frame), CGRectGetHeight(self.frame));
+    view.frame = CGRectMake(0, CGRectGetWidth(cell.frame) - CGRectGetHeight(self.frame), CGRectGetHeight(cell.frame), CGRectGetHeight(self.frame));
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {

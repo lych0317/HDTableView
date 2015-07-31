@@ -21,13 +21,17 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    if (self.imageView.image) {
-        CGSize size = self.imageView.image.size;
-        self.imageView.frame = CGRectMake(15, (CGRectGetHeight(self.frame) - size.height) / 2, size.width, size.height);
-
-        self.textLabel.frame = CGRectMake(CGRectGetMaxX(self.imageView.frame) + 10, 0, CGRectGetWidth(self.frame) - CGRectGetMaxX(self.imageView.frame) - 20, CGRectGetHeight(self.frame));
+    if (self.contentView) {
+        self.contentView.frame = self.bounds;
     } else {
-        self.textLabel.frame = CGRectMake(15, 0, CGRectGetWidth(self.frame) - 25, CGRectGetHeight(self.frame));
+        if (self.imageView.image) {
+            CGSize size = self.imageView.image.size;
+            self.imageView.frame = CGRectMake(15, (CGRectGetHeight(self.frame) - size.height) / 2, size.width, size.height);
+
+            self.textLabel.frame = CGRectMake(CGRectGetMaxX(self.imageView.frame) + 10, 0, CGRectGetWidth(self.frame) - CGRectGetMaxX(self.imageView.frame) - 20, CGRectGetHeight(self.frame));
+        } else {
+            self.textLabel.frame = CGRectMake(15, 0, CGRectGetWidth(self.frame) - 25, CGRectGetHeight(self.frame));
+        }
     }
 }
 
@@ -41,6 +45,14 @@
     _highlighted = highlighted;
     self.imageView.highlighted = _highlighted;
     self.textLabel.highlighted = _highlighted;
+}
+
+#pragma mark - Setters
+
+- (void)setContentView:(UIView *)contentView {
+    _contentView = contentView;
+    [self addSubview:_contentView];
+    _contentView.frame = self.bounds;
 }
 
 #pragma mark - Getters

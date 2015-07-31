@@ -38,8 +38,8 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.tableView scrollToRowAtIndexPath:[HDIndexPath indexPathForColumn:0 inSection:3] atScrollPosition:0 animated:YES];
-    [self.tableView selectRowAtIndexPath:[HDIndexPath indexPathForColumn:0 inSection:3] animated:YES scrollPosition:0];
+//    [self.tableView scrollToRowAtIndexPath:[HDIndexPath indexPathForColumn:0 inSection:3] atScrollPosition:0 animated:YES];
+//    [self.tableView selectRowAtIndexPath:[HDIndexPath indexPathForColumn:0 inSection:3] animated:YES scrollPosition:0];
 }
 
 #pragma mark - HDTableViewDelegate
@@ -95,9 +95,16 @@
         cell = [[HDTableCell alloc] initWithFrame:CGRectZero];
         cell.textLabel.textColor = [UIColor greenColor];
         cell.textLabel.highlightedTextColor = [UIColor purpleColor];
+//        UILabel *view = [[UILabel alloc] init];
+//        view.backgroundColor = [UIColor whiteColor];
+//        view.textColor = [UIColor greenColor];
+//        cell.contentView = view;
     }
     cell.imageView.image = [UIImage imageNamed:@"icon"];
     cell.textLabel.text = [NSString stringWithFormat:@"title - %li", indexPath.section];
+//    UILabel *label = (UILabel *)cell.contentView;
+//    label.text = [NSString stringWithFormat:@"title - %li", indexPath.section];
+
     return cell;
 }
 
