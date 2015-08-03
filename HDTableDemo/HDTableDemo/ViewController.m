@@ -38,14 +38,14 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-//    [self.tableView scrollToRowAtIndexPath:[HDIndexPath indexPathForColumn:0 inSection:3] atScrollPosition:0 animated:YES];
-//    [self.tableView selectRowAtIndexPath:[HDIndexPath indexPathForColumn:0 inSection:3] animated:YES scrollPosition:0];
+//    [self.tableView scrollToColumnAtIndexPath:[HDIndexPath indexPathForColumn:0 inSection:3] atScrollPosition:0 animated:YES];
+    [self.tableView selectColumnAtIndexPath:[HDIndexPath indexPathForColumn:0 inSection:3] animated:YES scrollPosition:0];
 }
 
 #pragma mark - HDTableViewDelegate
 
 - (void)tableView:(HDTableView *)tableView didSelectColumnAtIndexPath:(HDIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectColumnAtIndexPath:indexPath animated:YES];
 }
 
 //- (NSInteger)tableView:(HDTableView *)tableView widthForHeaderInSection:(NSInteger)section {
@@ -63,18 +63,21 @@
     return 2;
 }
 
-- (UIView *)tableView:(HDTableView *)tableView viewForHeaderInSection:(NSInteger)section reuseableHeader:(UIView *)header {
-    if (header == nil) {
-        header = [[UIView alloc] initWithFrame:CGRectZero];
-        header.backgroundColor = [UIColor yellowColor];
-    }
-    return header;
-}
+//- (UIView *)tableView:(HDTableView *)tableView viewForHeaderInSection:(NSInteger)section reuseableHeader:(UIView *)header {
+//    if (header == nil) {
+//        header = [[UIView alloc] initWithFrame:CGRectZero];
+//        header.backgroundColor = [UIColor yellowColor];
+//    }
+//    return header;
+//}
 
 - (UIView *)tableView:(HDTableView *)tableView viewForFooterInSection:(NSInteger)section reuseableFooter:(UIView *)footer {
     if (footer == nil) {
         footer = [[UIView alloc] initWithFrame:CGRectZero];
-        footer.backgroundColor = [UIColor orangeColor];
+        UIView *shaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 10, 1, 44 - 20)];
+        shaderView.backgroundColor = [UIColor orangeColor];
+        [footer addSubview:shaderView];
+        footer.backgroundColor = [UIColor redColor];
     }
     return footer;
 }

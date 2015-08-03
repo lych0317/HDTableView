@@ -15,6 +15,8 @@
     if (self) {
         [self addSubview:self.imageView];
         [self addSubview:self.textLabel];
+        self.imageEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+        self.textEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
     }
     return self;
 }
@@ -26,11 +28,11 @@
     } else {
         if (self.imageView.image) {
             CGSize size = self.imageView.image.size;
-            self.imageView.frame = CGRectMake(15, (CGRectGetHeight(self.frame) - size.height) / 2, size.width, size.height);
+            self.imageView.frame = CGRectMake(self.imageEdgeInsets.left, (CGRectGetHeight(self.frame) - size.height) / 2, size.width, size.height);
 
-            self.textLabel.frame = CGRectMake(CGRectGetMaxX(self.imageView.frame) + 10, 0, CGRectGetWidth(self.frame) - CGRectGetMaxX(self.imageView.frame) - 20, CGRectGetHeight(self.frame));
+            self.textLabel.frame = CGRectMake(CGRectGetMaxX(self.imageView.frame) + self.textEdgeInsets.left, 0, CGRectGetWidth(self.frame) - CGRectGetMaxX(self.imageView.frame) - self.textEdgeInsets.left - self.textEdgeInsets.right, CGRectGetHeight(self.frame));
         } else {
-            self.textLabel.frame = CGRectMake(15, 0, CGRectGetWidth(self.frame) - 25, CGRectGetHeight(self.frame));
+            self.textLabel.frame = CGRectMake(self.textEdgeInsets.left, 0, CGRectGetWidth(self.frame) - self.textEdgeInsets.left - self.textEdgeInsets.right, CGRectGetHeight(self.frame));
         }
     }
 }
@@ -67,6 +69,7 @@
 - (UILabel *)textLabel {
     if (_textLabel == nil) {
         _textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _textLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _textLabel;
 }

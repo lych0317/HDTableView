@@ -15,6 +15,9 @@
 
 @property (nonatomic, strong) UIView *contentView;
 
+@property (nonatomic, assign) UIEdgeInsets imageEdgeInsets;
+@property (nonatomic, assign) UIEdgeInsets textEdgeInsets;
+
 @property (nonatomic, getter=isSelected) BOOL selected;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted;
 

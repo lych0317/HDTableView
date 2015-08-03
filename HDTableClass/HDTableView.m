@@ -51,35 +51,44 @@ static NSString *FooterForReuseIdentifier = @"FooterForReuseIdentifier";
     self.widthForHeader = 0;
     self.widthForFooter = 0;
     self.heightForSelectedFlag = 0;
+    self.selectionStyle = UITableViewCellSelectionStyleDefault;
+}
+
+- (void)reloadData {
+    [self.tableView reloadData];
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.tableView.frame = self.bounds;
 
-    [self layoutSelectedFlagViewWithIndexPath:[self.tableView indexPathForSelectedRow]];
+    [self layoutSelectedFlagViewWithIndexPath:[self.tableView indexPathForSelectedRow] animated:NO];
 }
 
-- (void)layoutSelectedFlagViewWithIndexPath:(NSIndexPath *)indexPath {
+- (void)layoutSelectedFlagViewWithIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated {
     if (indexPath) {
         CGRect rect = [self.tableView rectForRowAtIndexPath:indexPath];
-        [UIView animateWithDuration:0.5 animations:^{
+        [UIView animateWithDuration:animated ? 0.5 : 0 animations:^{
             self.selectedFlagView.frame = CGRectMake(CGRectGetMinX(rect), CGRectGetMinY(rect), [self heightForSelectedFlagAtIndexPath:HDIndexPathFromNSIndexPath(indexPath)], CGRectGetHeight(rect));
         }];
     }
 }
 
-- (void)scrollToRowAtIndexPath:(HDIndexPath *)indexPath atScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated {
+- (void)scrollToColumnAtIndexPath:(HDIndexPath *)indexPath atScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated {
     [self.tableView scrollToRowAtIndexPath:NSIndexPathFromHDIndexPath(indexPath) atScrollPosition:scrollPosition animated:animated];
 }
 
-- (void)selectRowAtIndexPath:(HDIndexPath *)indexPath animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition {
+- (void)selectColumnAtIndexPath:(HDIndexPath *)indexPath animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition {
     [self.tableView selectRowAtIndexPath:NSIndexPathFromHDIndexPath(indexPath) animated:animated scrollPosition:scrollPosition];
-    [self layoutSelectedFlagViewWithIndexPath:NSIndexPathFromHDIndexPath(indexPath)];
+    [self layoutSelectedFlagViewWithIndexPath:NSIndexPathFromHDIndexPath(indexPath) animated:animated];
+    HDTableCell *cell = (HDTableCell *)[((UITableViewCell *)[self.tableView cellForRowAtIndexPath:NSIndexPathFromHDIndexPath(indexPath)]).contentView viewWithTag:HDTableCellTag];
+    cell.selected = YES;
 }
 
-- (void)deselectRowAtIndexPath:(HDIndexPath *)indexPath animated:(BOOL)animated {
+- (void)deselectColumnAtIndexPath:(HDIndexPath *)indexPath animated:(BOOL)animated {
     [self.tableView deselectRowAtIndexPath:NSIndexPathFromHDIndexPath(indexPath) animated:animated];
+    HDTableCell *cell = (HDTableCell *)[((UITableViewCell *)[self.tableView cellForRowAtIndexPath:NSIndexPathFromHDIndexPath(indexPath)]).contentView viewWithTag:HDTableCellTag];
+    cell.selected = NO;
 }
 
 #pragma mark - UITableViewDataSource
@@ -98,6 +107,7 @@ static NSString *FooterForReuseIdentifier = @"FooterForReuseIdentifier";
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellForReuseIdentifier];
         cell.contentView.transform = CGAffineTransformMakeRotation(M_PI / 2);
         cell.backgroundColor = [UIColor clearColor];
+        cell.selectionStyle = self.selectionStyle;
     }
     UIView *contentView = [self cellForColumnAtIndexPath:HDIndexPathFromNSIndexPath(indexPath) reuseableCell:(HDTableCell *)[cell.contentView viewWithTag:HDTableCellTag]];
     contentView.tag = HDTableCellTag;
@@ -151,7 +161,7 @@ static NSString *FooterForReuseIdentifier = @"FooterForReuseIdentifier";
     HDTableCell *hdCell = (HDTableCell *)[cell.contentView viewWithTag:HDTableCellTag];
     hdCell.selected = YES;
 
-    [self layoutSelectedFlagViewWithIndexPath:indexPath];
+    [self layoutSelectedFlagViewWithIndexPath:indexPath animated:YES];
 
     if ([self.delegate respondsToSelector:@selector(tableView:didSelectColumnAtIndexPath:)]) {
         [self.delegate tableView:self didSelectColumnAtIndexPath:HDIndexPathFromNSIndexPath(indexPath)];
@@ -184,10 +194,18 @@ static NSString *FooterForReuseIdentifier = @"FooterForReuseIdentifier";
         footer.contentView.transform = CGAffineTransformMakeRotation(M_PI / 2);
         footer.contentView.backgroundColor = [UIColor clearColor];
     }
-    UIView *contentView = [self viewForHeaderInSection:section reuseableHeader:[footer.contentView viewWithTag:HDTableFooterTag]];
+    UIView *contentView = [self viewForFooterInSection:section reuseableFooter:[footer.contentView viewWithTag:HDTableFooterTag]];
     contentView.tag = HDTableFooterTag;
     [footer.contentView addSubview:contentView];
     return footer;
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if ([self.delegate respondsToSelector:@selector(tableView:scrollToIndexPath:)]) {
+        [self.delegate tableView:self scrollToIndexPath:HDIndexPathFromNSIndexPath([self.tableView indexPathForRowAtPoint:scrollView.contentOffset])];
+    }
 }
 
 #pragma mark - HDTableViewDataSource - safe

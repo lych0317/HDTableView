@@ -40,6 +40,8 @@
 - (UIView *)tableView:(HDTableView *)tableView viewForHeaderInSection:(NSInteger)section reuseableHeader:(UIView *)header;
 - (UIView *)tableView:(HDTableView *)tableView viewForFooterInSection:(NSInteger)section reuseableFooter:(UIView *)footer;
 
+- (void)tableView:(HDTableView *)tableView scrollToIndexPath:(HDIndexPath *)indexPath;
+
 @end
 
 @interface HDTableView : UIView <UITableViewDataSource, UITableViewDelegate>
@@ -50,6 +52,8 @@
 @property (nonatomic, strong, readonly) UITableView *tableView;
 @property (nonatomic, strong, readonly) UIView *selectedFlagView;
 
+@property (nonatomic, assign) UITableViewCellSelectionStyle selectionStyle;
+
 @property (nonatomic, assign) NSInteger widthForColumn;
 @property (nonatomic, assign) NSInteger widthForHeader;
 @property (nonatomic, assign) NSInteger widthForFooter;
@@ -57,9 +61,11 @@
 
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style;
 
-- (void)scrollToRowAtIndexPath:(HDIndexPath *)indexPath atScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated;
+- (void)reloadData;
 
-- (void)selectRowAtIndexPath:(HDIndexPath *)indexPath animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition;
-- (void)deselectRowAtIndexPath:(HDIndexPath *)indexPath animated:(BOOL)animated;
+- (void)scrollToColumnAtIndexPath:(HDIndexPath *)indexPath atScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated;
+
+- (void)selectColumnAtIndexPath:(HDIndexPath *)indexPath animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition;
+- (void)deselectColumnAtIndexPath:(HDIndexPath *)indexPath animated:(BOOL)animated;
 
 @end

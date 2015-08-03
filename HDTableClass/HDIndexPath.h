@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define HDIndexPathZero [HDIndexPath indexPathForColumn:0 inSection:0]
+
 @interface HDIndexPath : NSObject
 
 + (HDIndexPath *)indexPathForColumn:(NSInteger)column inSection:(NSInteger)section;
