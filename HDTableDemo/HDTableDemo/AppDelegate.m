@@ -3,7 +3,7 @@
 //  HDTableDemo
 //
 //  Created by 李远超 on 15/7/24.
-//  Copyright (c) 2015年 xiaoyezi. All rights reserved.
+//  Copyright (c) 2015年 liyc. All rights reserved.
 //
 
 #import "AppDelegate.h"
